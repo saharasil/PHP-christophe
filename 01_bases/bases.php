@@ -4,6 +4,14 @@
         border-bottom : 1px solid navy;
         color : navy;
     }
+table, td{
+        border : 1px solid black; 
+        border-collapse: collapse;
+        padding : 50px;
+        background : #ffc0d0;
+        color : black;
+    }
+  
 
 </style>
 
@@ -18,7 +26,8 @@ echo ' <h2>1- Les balises PHP </h2>' ;
 // Pour fermer un passage en PHP on utilise la balise suivante :
 ?>
 
-<p>Bonjour</p> <!-- en dehors des balises du PHP nous pouvons écrire du HTML dans fichier ayant l'extention .php ( ce n'est pas possible dans un fichier .html) -->
+<p><a href="#bas">Bonjour</a></p> <!-- en dehors des balises du PHP nous pouvons écrire du HTML dans fichier ayant l'extention .php ( ce n'est pas possible dans un fichier .html) -->
+
 
 <?php 
 // vous ,'ête pas obligé de fermer un pasage en PHP en fin de script.
@@ -451,20 +460,214 @@ echo bonjour ('John', 'Doe'); // si la fonction attend des valeurs il faut oblig
     echo '<input type ="submit">';
     echo '</form>';
 
+//Exercice : 
+//- faire  une boucle for qui affiche 0 à 9  sur la même ligne 
+//- puis vous compléter la boucle précédente , pour mettre les chiffres dans une table HTML . vous y mettre une bordure en css.
+//En desous je ferme ma balise php      
+?> 
+<table>
+<tr>
+<?php
+    
+for($i=0; $i<10; $i++){
+    echo'<td>' . $i . '</td>';
+ 
+}
+   
+?>
+</tr>
+</table>
+<?php
+// correction 2 en php
+echo '<br>';
+echo '<table>';
+    echo '<tr>';
+    for($i=0; $i<10; $i++){
+        echo'<td>' . $i . '</td>';
+     
+    }
+    echo '</tr>';
+echo '</table>';
 
-       
+
+  //---------------------------------------------------------
+  echo ' <h2> 14-  Les tableaux (array) </h2>' ;
+  //---------------------------------------------------------
+
+  // Un tableau appelé Array en anglais , est une variable amélirer dans laquelle on stocke une multitude de valeurs . Ces valeurs peuvent être de n'importe quel type . Elle possédent un indice dont la numérotation commence à 0.
+
+  // Déclarer un array (méthode 1) :
+  $liste = array ('Grégoire', 'Nathalie', 'Emilie','François', 'Georges'); //les valeurs sont séparées par une virgule.
+  // echo $liste ; // erreur de type "Array to string conversion" car on ne peut pas afficher directement un tableau.
+  echo '<pre>';
+  var_dump($liste); // affiche le contenu du tableau avec les types 
+  echo '<pre>';
+
+  echo '<pre>';
+  print_r($liste); // affiche le contenu du tableau sans les types
+  echo '<pre>'; // <pre> est une balise html qui permet de formater le texte 
+  // pour notre besoin nous créons notre fonction personnelle d'affichage :
+  function debug($var){
+    echo '<pre>';
+    print_r($var); 
+    echo '<pre>';
+
+  }
+  debug($liste);
+  // Autre façon de déclarer un array (méthode 2):
+  $tab = ['France', 'Italie', 'Espagne', 'Portugal'];
+  //Indice   0          1         2           3
+  echo $tab[1] . '<br>'; // pour afficher une valeur du tableau on écrit son indice dans paire de crochets après le nom du tableau. Ici affiche Iatalie.
+  //Ajouter une valeur à la fin d'un tableau :
+  $tab [] = 'Suisse'; // lescrochets vides signifient qu'on ajoute une valeur à la fin du tableau $tab
+  debug($tab); // pour vérifier que la valeur "Suisse" est présente.
+  echo $tab[4];
 
 
 
+
+  //---------- 
+  // Les tableaux associatifs
+  // Dans un tableau associatif nous pouvons choisir le nom des indices.
+  $couleur = array(
+    'b' => 'bleu',
+    'r' => 'rouge',
+    'v' => 'vert'
+  ); 
+
+  debug($couleur);
+  // pour afficher une valeur de notre tableau associatif:
+    echo 'La première couleur du tableau est : ' . $couleur['b'] .' . <br>';
+    echo "La première couleur du tableau est :  $couleur[b] . <br>"; // Quand un tableau associatif est écrit dans des guillemets ou des quotes, il perd les quotes autour de son indice.
+
+    //----------------
+    //Compter le nombre d'élément contenu dans un tableau :
+    echo 'Nombre de valeurs dans le tableau : ' . count($couleur) . ' . <br>'; // affiche 3
+    echo 'Nombre de valeurs dans le tableau : ' . sizeof($couleur) . ' . <br>'; // affiche 3  aussi car sizeof() fait la même chose que count() donc il est un alias.
+
+ 
+ 
+
+  //---------------------------------------------------------
+  echo ' <h2> 15-  La boucle foreach </h2>' ;
+  //-------------------------------------------------------
+  //foreach est un moyen simple de passer un revue un tableau de façcon automatique . Cette boucle ne fonction que sur les tableaux est les objets.
+
+  debug($tab); // pour voie le tableau à parcourir.
+    echo '<ol>';
+        foreach($tab as $pays){ // on parcourt le tableau $tab par ses baleurs . la variable $pays prend les valeurs du tableau successivement à chaque tour de boucle. Le mot "as" fait partie de la syntaxe? il est obligatoire.
+            echo '<li>' . $pays . '</li>' .'<br>';
+        }
+    echo '</ol>';
+
+    // la boucle foreach pour parcourir les INDICES et les VALUERS :
+        foreach ($tab as $indice => $pays) { // quand il y a 2 variable aprés "as" celle de gauche parcous les indice est celle de droite parcourt les valeurs (quelque soit leur nom).
+            echo 'Indice ' . $indice . ' correspond à ' . $pays . '. <br>' ;
+        }
+// Exercice : vous déclarer un tableau associatif avec les indices prenom, nom, email, telephone et vous y metter les valeurs correspondabnt à un seul contact. Puis avec une boucle foreach , vous affichez les valeurs dans des <p>, sauf le prenom doit ^étre dans un <h3>.
+
+
+
+$contact = array(
+    'prenom' => 'Sahar',
+    'nom' => 'Ferchichi ',
+    'email' => 'sahar.ferchichi@lepoles.com',
+    'telephone' => '07 53 06 27 67'
+);
+debug($contact);
+
+
+    foreach ($contact as $indice => $personne ){
+        if ( $indice == 'prenom'){
+            echo  '<h3>Bonjour ' . $personne .'! </h3>';
+
+        }else {
+            echo '<p>'. $personne . '</p>' ;
+        }
+      
+    }
+
+
+  //---------------------------------------------------------
+  echo ' <h2> 16- Tableau multidimentionnel </h2>' ;
+  //-------------------------------------------------------
+  //On parle de tableau multidimentionnel quand un tableau est contenu dans un autre tableau.Cahaque tableau représente une dimension.
+
+
+// Création d'un tableau mltidimentionnel :
+
+$tab_multi = array(
+    0 =>  array(
+        'prenom' => 'Julien',
+        'nom' => 'Dupon',
+        'telephone' => '0125558557'
+    ),
+    1 => array(
+        'prenom' => 'Nicolas',
+        'nom' => 'Duron',
+        'telephone' => '01255525557'
+    ),
+    2 => array(
+        'prenom' => 'Pierre',
+        'nom' => 'Dulac',
         
+    )
 
-        
+);
+debug($tab_multi);
+debug($tab_multi[1]); // pour afficher que le tableau d'indice [1]
+
+//afficher la valeur "julien" de $tab_multi:
+echo $tab_multi[0]['prenom'];// pour afficher "julien" nous entrons d'abord à l'indice [0]de $tab_multi puis nous allons dans le sous tableau à l'indice ['prenom'].
+//pour parcourir le tableau multidimentionnel on peut faire une boucle for car ses indices sont numérique :
+    echo '<br>';
+    for($i=0 ; $i < count($tab_multi); $i ++) { //tant que $i est inférieur au nombre d'élément  du tableau $tab_multi (soit 3) , on entre dans la boucle :
+      echo $tab_multi[$i]['prenom'] . ' '; // $i vas successivement prendre la valeur 0, puis 1, puis 2 , ce qui permet d'afficher les 3 prénoms.
+    }
+    echo '<hr>';
+//Exercice : vous affichez les trois prénom de tableau $tab_multiabec une boucle foreach.
+
+    
+
+foreach ($tab_multi as $indice => $valeur ){
+    
+    // echo $tab_multi[$indice]['prenom'] . ' ';
+    //ou 
+    echo $valeur['prenom'] . ' ';
+  
+}
+
+echo'<hr>';
+
+//Exercice :  vous déclarer un tableau avec les taille  S, M et L et XL , puis vous affichez les tailles dans un menu déroulant avec une boucle foreach .
+$taille = array(
+    0 => 'S',
+    1 => 'M',
+    2 => 'L',
+    3 => 'XL'
+);
+    echo '<form>';
+    echo'<label> Tailles </label>';
+    echo'<select>';
+        foreach ($taille as $indice => $valeur ){
+            echo'<option>' . $valeur .'</option>';
+            
+        }
+    echo '</select>';
+    echo '<input type="submit" value="Ajouter au panier">';
+    echo '</form>';
+
+
+//---------------------------------------------------------
+echo ' <h2> 17- Inclusions de fichier </h2>' ;
+//-------------------------------------------------------
 
 
 
 
 
-
+?>
+<div id="bas"></div>
 
 
 
