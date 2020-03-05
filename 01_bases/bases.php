@@ -16,6 +16,7 @@ table, td{
 </style>
 
 <?php 
+require_once 'fonctions.php'; // pour inclure la fonction debug() dans le fichier
 //-------------------------------
 echo ' <h2>1- Les balises PHP </h2>' ;
 //-------------------------------
@@ -506,13 +507,15 @@ echo '</table>';
   echo '<pre>';
   print_r($liste); // affiche le contenu du tableau sans les types
   echo '<pre>'; // <pre> est une balise html qui permet de formater le texte 
-  // pour notre besoin nous créons notre fonction personnelle d'affichage :
-  function debug($var){
-    echo '<pre>';
-    print_r($var); 
-    echo '<pre>';
+// pour notre besoin nous créons notre fonction personnelle d'affichage :
+//( je l'ai déplacer dans le fichier "fonctions.php" et je l'ai inclut avec required_once)
+  
+//   function debug($var){
+//     echo '<pre>';
+//     print_r($var); 
+//     echo '<pre>';
 
-  }
+//   }
   debug($liste);
   // Autre façon de déclarer un array (méthode 2):
   $tab = ['France', 'Italie', 'Espagne', 'Portugal'];
@@ -660,7 +663,23 @@ $taille = array(
 
 //---------------------------------------------------------
 echo ' <h2> 17- Inclusions de fichier </h2>' ;
-//-------------------------------------------------------
+//---------------------------------------------------------
+
+echo'Prmière inclusion : ';
+include 'exemple.inc.php'; // permet de faire l'inclusion du fichier dont le chemin est spécifié. en cas d'erreur lors de l'inclusion include génère un warning et continue l'exécution du script.
+echo'<br>';
+echo'Deuxième inclusion : ';
+include_once 'exemple.inc.php'; //  permet de faire l'inclusion du fichier si celui ci n'a pas été inclus.(on ne kl'inclus qu'une seule fois)
+echo'<br>';
+echo 'Trousième inclusion : ';
+require 'exemple.inc.php';// fait l'inclusion du fichier spécifié. celui ci est obligatoire au bon fonctionnement du site : en cas d'erreur lors de l'inclusion require génère une erreur de type "fatal erreur" et stoppe l'exécition du script.
+echo'<br>';
+echo 'Quatrième inclusion';
+require_once 'exemple.inc.php';// "once" signifie que l'on vérifie si le fichier a déjà inclus. si c'est le cas, on le ré-inclut pas .
+// le ".inc" dans le nom du fichier "exemple.inc.php" est un indicatif pour préciser aux développeurs que le fichier est distiné à être inclus, et qu'il ne s'agit pas d'une page à part entière. 
+
+
+
 
 
 
