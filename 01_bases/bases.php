@@ -679,9 +679,28 @@ require_once 'exemple.inc.php';// "once" signifie que l'on vérifie si le fichie
 // le ".inc" dans le nom du fichier "exemple.inc.php" est un indicatif pour préciser aux développeurs que le fichier est distiné à être inclus, et qu'il ne s'agit pas d'une page à part entière. 
 
 
+//---------------------------------------------------------
+echo ' <h2> 18 - Introduction aux objets </h2>' ;
+//---------------------------------------------------------
+
+//Un objet est un autre type de donnée (object en anglais ) il représente un objet réel (par exemple , une voiture , un personnage, un membre inscrit sur votre site, un produit que vous vendez, un panier d'achat) auquel on peut associer des variables, appelées propriétés, et des conctions appelées méthodes.
+// pour créer des objets il nous faut un plan de construction c'est le rôle de la classe (class en anglais). Nous créons ici une class pour fabriquer des meubles :
 
 
+class Meuble{ // on met une majuscule à la 1ère lettre du  nom de la classe 
+    
+    public $marque = 'ikea'; // propriété "marque" . public permet de préciser que l'élément sera accessible partout.
+    public function prix() {// prix() est une méthode.
+        return rand(50,200) . '€' ;  // rand() est une fonction prédéfinie qui tire un chiffre aléatoire ici entre 50 et 200 .
+    }
 
+}
+
+// On crée une table à partir de la classe Meuble :
+$table = new Meuble(); // On crée un objet $table à partir de la classe meuble à l'aide  du mot clé " new " . On dit que l'on instancie la classe.  $table est donc de type objet.
+debug($table); // onvoit le type object et la seulepropriété "marque" .
+echo 'La marque de notre table est : ' .$table ->marque . '<br>'; // pour accéder à la propriété d'un objet , on écrit l'objet suivi de la flèche "->" puis du nom de la propriété SANS le "$".
+echo ' Le prix de notre table est : ' . $table -> prix() . '<br>'; // pour exécuter la méthode d'un objet, on écrit son nom après la flèche "->" et on lui ajoute une paire de ().
 
 
 
