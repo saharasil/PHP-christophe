@@ -5,7 +5,7 @@
 // -------------------------------
 /*
 Un cookie est un petit fichier (4ko max) déposé par le serveur web sur le poste de l'internaute, est qui contient des informations.
-Les coohies sont automatiquement envoyés au serveur web par le navigateur lorsque l'internaute navigue dans les pages concernées par les cookies.
+Les cookies sont automatiquement envoyés au serveur web par le navigateur lorsque l'internaute navigue dans les pages concernées par les cookies.
 PHP permet de récupérer très facilement les données contenues dans un cookies : ses informations sont stockées dans la superglobale $_COOKIE.
 Un cookie étant sauvegardé sur le poste de l'internaute, il peut y être mofifié, volé ou détourné. On n'y met donc pas d'informations sensibles ( mot de passe, panier d'achat, références bancaires...).
 */
@@ -40,8 +40,8 @@ echo '<h2> langue du site : ' . $langue . '</h2>';
 <h1>Votre langue</h1>
 <ul>
     
-      <li>  <a href="?langue=fr">Français</a></li><!-- On envoie la langue choisie par l'URL : la valeur "fr" est réceptionnée dans la superglobale $_GET-->
-      <li> <a href="?langue=es">Espagnol</a></li>
+      <li><a href="?langue=fr">Français</a></li><!-- On envoie la langue choisie par l'URL : la valeur "fr" est réceptionnée dans la superglobale $_GET-->
+      <li><a href="?langue=es">Espagnol</a></li>
       <li><a href="?langue=it">Italien</a></li>
-      <li> <a href="?langue=en">Anglais</a></li>
+      <li><a href="?langue=en">Anglais</a></li>
 </ul>
