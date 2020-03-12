@@ -6,7 +6,7 @@ require_once '../01_bases/fonctions.php';
 
 /*
 $_POST est une superglobale qui permet de récupéter les données saisie dns un formulaire.
-Comme il s'agit d'une superglobale, $_POST est donc un tableau ( array), et il est disponible dans tous les contextes du script, y cimpris au sein des fonctions (pas besoin de faire "global "$_POST").
+Comme il s'agit d'une superglobale, $_POST est donc un tableau ( array), et il est disponible dans tous les contextes du script, y compris au sein des fonctions (pas besoin de faire "global "$_POST").
 Le tableau $_POST se remplit de la manière suivante :
 $_POST = array(
     'name1' => 'valeur1',

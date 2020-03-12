@@ -31,12 +31,15 @@ echo ' <h2> 02- Faire des requêtes avec exec() </h2>' ;
 
 // on va insérer un employé en BDD : 
 $resultat =  $pdo -> exec("INSERT INTO employes (prenom, nom, sexe, service, date_embauche, salaire) VALUE ('John', 'Doe', 'm', 'informatisue','2020-03-09',2000)");
-/*La methode exec() est utilisée pour faire des requêtes qui ne retournent pas de jeu de résultats : INSERT, UPDATE, DELETE.
+
+/*
+    La methode exec() est utilisée pour faire des requêtes qui ne retournent pas de jeu de résultats : INSERT, UPDATE, DELETE.
 
     valeur de retour : 
         Succés : indique le nombre de lignes affectées par la requête
         Echec : false
 */
+
 echo 'Nombre d\'enregistrements affectés par la  requête : ' . $resultat . '<br>';
 echo 'Denier id généré en BDD : ' . $pdo ->lastInsertId();
 //Supprimer les John Doe de la BDD :
@@ -58,10 +61,10 @@ valeur de retour :
     succés : query() retourne un nouvel objet qui provient de la classe PDOStatement
     Echec : False
 */
-debug($resultat); // dans cette objet $ resultat, nous ne voyons pas les données concernant Daniel . Pourtant elles  s'y trouvent. Pour y accéder nous devons utiliser une methodes de $resultat qui s'appelle fetch().
+debug($resultat); // dans cette objet $resultat, nous ne voyons pas les données concernant Daniel . Pourtant elles  s'y trouvent. Pour y accéder nous devons utiliser une methodes de $resultat qui s'appelle fetch().
 //On transforme l'objet de $résultat avec cette méthode fetch() :
-    $employe =  $resultat -> fetch(PDO::FETCH_ASSOC);
-    debug($employe); // fetch() avec le paramètre PDO::FETCH_ASSOC permet de transformer l'objet $resultat en un ARRAy ASSOCIATIF appelé ici $employe . On y trouve en indices le nom des champs de la requête SQL (on y a mis une * pour avoir tous les champs).
+    $employe =  $resultat ->fetch(PDO::FETCH_ASSOC);
+    debug($employe); // fetch() avec le paramètre PDO::FETCH_ASSOC permet de transformer l'objet $resultat en un ARRAY ASSOCIATIF appelé ici $employe . On y trouve en indices le nom des champs de la requête SQL (on y a mis une * pour avoir tous les champs).
     echo 'Je suis ' . $employe['prenom'] .' ' . $employe['nom'] . 'du service ' . $employe['service'] . '<br>' ;
 /* 
 Pour l'information , on peut mettre dans les parnthéses de fetch() : 
@@ -87,7 +90,7 @@ $resultat = $pdo ->query("SELECT * FROM employes");
 debug($resultat);
 echo 'Nombre d\'employés : ' . $resultat->rowCount() . '<br>'; // Cette methode rowCount() permet  de compter le nombre de ligne retourner par la requête (exemple : Nombre de produit sélectionner par l'internaute).
 // Comme nous avons plusieurs lignes dans $resultat, nous devons faire une boucle pour les pacourir;
-while ($employe = $resultat->fetch(PDO::FETCH_ASSOC)){ // fetch()va chercher la ligne suivante du jeu de résultats à chaque tour de boucle, et le transforme en tableau associatif.Laboucle while permet de faire avancer le curseur dans l'objet.Quan il arrive à la fin fetch() retourne false et la boucle s'arrête. 
+while ($employe = $resultat->fetch(PDO::FETCH_ASSOC)){ // fetch()va chercher la ligne suivante du jeu de résultats à chaque tour de boucle, et le transforme en tableau associatif.La boucle while permet de faire avancer le curseur dans l'objet. Quand il arrive à la fin fetch() retourne false et la boucle s'arrête. 
     // debug($employe);// $employe est un array associatif qui contient les données de chaque employés(nous avons 1 employé par tour de boucle).
 
     echo '<div>';
@@ -98,7 +101,7 @@ while ($employe = $resultat->fetch(PDO::FETCH_ASSOC)){ // fetch()va chercher la 
     echo '</div><hr>';
 }
 
-//Si votre requête ne donne qu'un seul résultat (par identifiant par exemple), alors on ne fait pas de bouvle.
+//Si votre requête ne donne qu'un seul résultat (par identifiant par exemple), alors on ne fait pas de boucle.
 // Si votre requête donne un ou plusieurs résultats, alors on fait une boucle ( sinon on obtient que le premier résultat de la requête).
 
 //-------------------------------------------------------
@@ -170,8 +173,8 @@ echo '</table>';
 //----------------------------------------------
 echo ' <h2> 07-  Requêtes préparées </h2>' ;
 //----------------------------------------------
-// Les requêtes préparer sont préconisées si vous exécutez plusieurs fois la même requête. Ainsi vous évitez au SGBD de répéter toutes les phrases analuse/ interpretation / exécution de la requête (gain de performance).
-// Les requêtespréparées sont aussi utilisées pour nettoyer les données et se prémunir des injections de type SQL (ce que nous verrons dans un chapitre ultérieur).
+// Les requêtes préparer sont préconisées si vous exécutez plusieurs fois la même requête. Ainsi vous évitez au SGBD de répéter toutes les phrases analyse/ interpretation / exécution de la requête (gain de performance).
+// Les requêtes préparées sont aussi utilisées pour nettoyer les données et se prémunir des injections de type SQL (ce que nous verrons dans un chapitre ultérieur).
 $nom = 'sennard';
 //  Une requête préparée se réalise en trois étapes : 
 // 1- On prépare la requête :
@@ -179,7 +182,7 @@ $resultat = $pdo->prepare("SELECT *  FROM employes  WHERE nom =:nom");//permet d
 // 2- On lie le marquer à la variable $nom : 
 $resultat->bindParam(':nom', $nom); //bindParam() permet de lier le marqueur à la varible $nom .Notez que cette méthode ne reçoit qu'une variable. On ne peut pas y mettre une valeur fixe comme "sennard" par exemple. Si vous avez besoins de lier le marqueur à une valeur fixe, alors il faut utiliser la méthode binValue(). Exemple : $resultat -> binValue(':nom', 'sennard').
 // 3- On exécute la requête : 
-$resultat->execute(); // permet d'exécuter toute la requêtepréparée avec prepare().
+$resultat->execute(); // permet d'exécuter toute la requête préparée avec prepare().
 debug($resultat);
 $employe = $resultat->fetch(PDO::FETCH_ASSOC); // On ne fait pas de boucle ici car il n'ya qu'un seul Sennard
 debug($employe);
