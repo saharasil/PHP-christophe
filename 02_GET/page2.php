@@ -3,11 +3,11 @@ require_once '../01_bases/fonctions.php';
 //---------------------------
 // La superglobale $_GET
 //---------------------------
-/* $_GET représente les données qui transitent par l'URL. Il s'agit d'une superglobale, et comme toutes les superglobales, d'un tableau (array).
+/* $_GET représente les données qui transitent par l'URL. Il s'agit d'une superglobale, et comme toutes les superglobales, c'est un tableau (array).
 "superglobale" signifie que cette variable est disponible partout dans le script, y compris au sein des fonctions (pas besoin de faire "global $_GET).
-Les informations transitent dans l4IRL selon la syntaxe suivante :
+Les informations transitent dans lUIRL selon la syntaxe suivante :
     page.php?indice1=valeur1&incdiceN=valeurN
-Quand on receptionne les données, $_GET de remplit selon le schéma suivant :
+Quand on receptionne les données, $_GET est remplit selon le schéma suivant :
     $_GET = array('indice1' => 'valeur1', 'indiceN' => 'valeurN');
 */
 debug($_GET);// pour vérifier les donnés reçues

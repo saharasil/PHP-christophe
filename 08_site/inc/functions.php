@@ -10,7 +10,7 @@ function debug($var){
 // Fonction liée au membre
 // vérifier si le membre est connecté
 function estConnecte(){
-    if(isset($_SESSION['membre'])){// Si la session contient un indice "membre", c'est que l'internaute est passé par la pagede connection avec les pseudo/mdp.
+    if(isset($_SESSION['membre'])){// Si la session contient un indice "membre", c'est que l'internaute est passé par la page de connecxion avec les pseudo/mdp.
         return true;// il est connecté
     }else {
         return false;// il n'est pas connécte

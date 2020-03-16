@@ -17,7 +17,7 @@ session_start();
 define('RACINE_SITE', '/PHP/08-site/'); //constante qui définit les dossiers dans lesquels se situe le site pour pouvoir déterminer des chemins absolus à partie de localhost. Ainsi nous écrions tous les chemins des src ou des href en absolu avec cette constante. Chez un hébergeur vous mettriez '/' si votre site se trouve à la racine de votre hébergement.
 
 // Variable pour afficher du HTML :
-$contenu =''; // on se sert de cette varoable partout sur le site.
+$contenu =''; // on se sert de cette variable partout sur le site.
 
 //Inclusions des fonctions :
 require_once 'functions.php';
