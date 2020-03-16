@@ -31,7 +31,7 @@ echo ' <h2>1- Les balises PHP </h2>' ;
 
 
 <?php 
-// vous ,'ête pas obligé de fermer un pasage en PHP en fin de script.
+// vous n'ête pas obligé de fermer un pasage en PHP en fin de script.
 // pour faire un commentaire su 1 seule ligne
 # pour faire un commentaire sur une seule ligne 
 /*
@@ -56,7 +56,7 @@ echo ' <h2> 3- Les variables </h2>' ;
 //-------------------------------
 
 // Une variable est un espace mémoir qui porte un nom et qui permet de conserver une valeur . Cette valeur peut être de n'importe quel type .
-// En PHP on représenyte une variable avec le signe "$".
+// En PHP on représente une variable avec le signe "$".
 
 $a = 127; // on déclare la variable $a et lui affecte la valeur 127.
 
