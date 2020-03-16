@@ -14,7 +14,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <!-- La marque  -->
-        <a class="navbar-brand" href="<?php echo RACINE_SITE . 'index.php'; ?>">MA BOUTIQUE</a><!-- on utilise la constante RACINE_SITE pour faire unchemin absolu vers l'index.php-->
+        <a class="navbar-brand" href="<?php echo RACINE_SITE . 'index.php'; ?>">MA BOUTIQUE</a><!-- on utilise la constante RACINE_SITE pour faire un chemin absolu vers l'index.php-->
         <!-- Le burger -->
         <!-- Le menu  -->
         <div class="collapse navbar-collapse" id="nav1">
