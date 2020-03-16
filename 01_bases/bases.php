@@ -60,7 +60,7 @@ echo ' <h2> 3- Les variables </h2>' ;
 
 $a = 127; // on déclare la variable $a et lui affecte la valeur 127.
 
-echo gettype($a); //gettype() est une fonction prédifine qui permet de voir le type d'une variable ici il s'agit d'un integer (entier).
+// echo gettype($a); //gettype() est une fonction prédifine qui permet de voir le type d'une variable ici il s'agit d'un integer (entier).
 echo'<br>';
 
 $a = 1.5;
