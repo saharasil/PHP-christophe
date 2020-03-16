@@ -704,6 +704,8 @@ echo ' Le prix de notre table est : ' . $table -> prix() . '<br>'; // pour exéc
 
 
 
+
+
 ?>
 <div id="bas"></div>
 
