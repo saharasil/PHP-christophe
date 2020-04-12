@@ -1,4 +1,4 @@
-<?php
+AQW		<?php
 require_once 'inc/init.php';
 $message = '';
 

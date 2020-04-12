@@ -19,6 +19,7 @@ require_once 'fonction.php';
 
 $resultat = $pdo->query("SELECT * FROM contact");
 debug($resultat);
+var_dump($resultat);
 
 
 ?>
