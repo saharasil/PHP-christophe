@@ -1,0 +1,35 @@
+/* feuille de style personnel */
+h1 {
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+p{
+    font-weight: 700;
+    font-style: italic;
+}
+
+figure {
+     margin: 20px;
+    position: relative;
+    left: 40%;
+    
+}
+figure img {
+    border: black 5px solid;
+    height: 300px;
+    width: 300px;
+}
+figure figcaption {
+    
+    font-size: larger;
+    
+}
+
+th {
+    text-align: center;
+}
+
+span {
+    font-weight: 700 ;
+
+}
